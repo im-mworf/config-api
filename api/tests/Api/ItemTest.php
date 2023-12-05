@@ -8,7 +8,7 @@ class ItemTest extends ApiTestCase
 {
     public function testCreateItem(): void
     {
-        static::createClient()->request('POST', '/item', [
+        static::createClient()->request('POST', '/items', [
             'json' => [
                 'key' => 'TEST-KEY-BASE-URL',
                 'name' => 'base-url',
