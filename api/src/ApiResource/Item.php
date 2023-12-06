@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
@@ -17,6 +18,7 @@ use App\State\ItemStateProvider;
 #[ApiResource(
     operations: [
         new Get(),
+        new GetCollection(),
         new Post(),
         new Put(),
         new Patch(),
@@ -27,8 +29,11 @@ use App\State\ItemStateProvider;
 )]
 class Item implements ResourceInterface
 {
+//    #[ApiProperty(readable: true, identifier: false)]
+//    public int $id;
+
     #[ApiProperty(readable: true, identifier: true)]
-    public string $key;
+    public string $slug;
 
     #[ApiProperty(readable: true)]
     public string $name;

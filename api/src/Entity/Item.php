@@ -19,7 +19,7 @@ class Item implements EntityInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 255, unique: true)]
-    private string $key;
+    private string $slug;
 
     #[ORM\Column(length: 255)]
     private string $name;
@@ -32,14 +32,14 @@ class Item implements EntityInterface
         return $this->id;
     }
 
-    public function getKey(): ?string
+    public function getSlug(): ?string
     {
-        return $this->key;
+        return $this->slug;
     }
 
-    public function setKey(string $key): static
+    public function setSlug(string $slug): static
     {
-        $this->key = $key;
+        $this->slug = $slug;
 
         return $this;
     }

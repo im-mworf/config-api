@@ -57,7 +57,7 @@ readonly class ItemStateProcessor implements ProcessorInterface
         $this->itemRepository->persist($this->entityMapper->map($item, $data));
 
         // re-affirm the key (for POST) (unique case as we are explicitly setting the identifier)
-        $uriVariables['key'] = $data->key;
+        $uriVariables['slug'] = $data->slug;
 
         // return the item from the provider
         return $this->itemProvider->provide($operation, $uriVariables, $context);
