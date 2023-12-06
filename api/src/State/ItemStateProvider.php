@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\State;
 
+use ApiPlatform\Metadata\CollectionOperationInterface;
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProviderInterface;
 use App\ApiResource\Item as ItemResource;
@@ -26,6 +27,16 @@ readonly class ItemStateProvider implements ProviderInterface
         array $uriVariables = [],
         array $context = []
     ): object|array|null {
+        // fetch the collection using the repository, map and return
+        if ($operation instanceof CollectionOperationInterface) {
+            $items = [];
+            foreach($this->itemRepository->findAll() as $item) {
+                $items[] = $this->resourceMapper->map(new ItemResource(), $item);
+            }
+
+            return $items;
+        }
+
         // fetch the entity using the repository
         $item = $this->itemRepository->findOneBy($uriVariables);
 
