@@ -12,7 +12,7 @@ class ItemTest extends ApiTestCase
     {
         static::createClient()->request('POST', '/items', [
             'json' => [
-                'key' => 'TEST-KEY-BASE-URL',
+                'slug' => 'TEST-KEY-BASE-URL',
                 'name' => 'base-url',
                 'value' => 'http://localhost/',
             ],
@@ -25,7 +25,7 @@ class ItemTest extends ApiTestCase
         $this->assertJsonContains([
             '@context' => '/contexts/Item',
             '@type' => 'Item',
-            'key' => 'TEST-KEY-BASE-URL',
+            'slug' => 'TEST-KEY-BASE-URL',
             'name' => 'base-url',
             'value' => 'http://localhost/',
         ]);
