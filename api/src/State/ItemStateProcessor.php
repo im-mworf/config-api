@@ -30,7 +30,7 @@ readonly class ItemStateProcessor implements ProcessorInterface
         Operation $operation,
         array $uriVariables = [],
         array $context = []
-    ) {
+    ): object|array|null {
         // check we are dealing with the correct resource
         assert($data instanceof ItemResource);
 
